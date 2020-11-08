@@ -1,4 +1,4 @@
-# ![Serenity BDD](docs/serenity-bdd-logo.png "Logo Title Text 1")
+# ![Serenity BDD](docs/youtube.png "Logo Title Text 1")
 
 
 # Prueba automatizada para realizar la búsqueda de un video en YouTube
