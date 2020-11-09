@@ -46,3 +46,6 @@
 * gradle clean test aggregate
 
 
+## Autores
+Juan Francisco Builes Montoya
+Copyright (c) 2011-2017 GitHub Inc.
