@@ -47,5 +47,5 @@
 
 
 ## Autores
-Juan Francisco Builes Montoya
-Copyright (c) 2011-2017 GitHub Inc.
+
+Juan Francisco Builes Montoya - juanfranciscobumo@gmail.com
