@@ -4,6 +4,7 @@
 # Prueba automatizada para realizar la búsqueda de un video en YouTube
 
 # ![Serenity BDD](docs/serenity.png "Logo Title Text 1")
+
 ## Framework
 
 * Serenity: Se utiliza como framework Serenity BDD, que utiliza los resultados de las pruebas para realizar la documentación describiendo lo que hace la aplicación, informa que pruebas se han realizado, las pruebas que fallaron y las que pasaron. 
@@ -16,12 +17,13 @@
 
 # ![Serenity BDD](docs/gradle.png "Logo Title Text 1")
 
-## Gradle
+### Gradle
+
 * Es un gestor de proyectos.
 
 # ![Serenity BDD](docs/cucumber.png "Logo Title Text 1")
 
-## Cucumber
+### Cucumber
 
 * Es una herramienta que permite escribir los casos de prueba.
 
