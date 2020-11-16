@@ -4,17 +4,10 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- master
+- main
 
 pool:
-  vmImage: '- task: Gradle@2
-  inputs:
-    gradleWrapperFile: 'gradlew'
-    tasks: 'clean'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    sonarQubeRunAnalysis: false'
+  vmImage: 'ubuntu-latest'
 
 steps:
 - task: Gradle@2
@@ -28,3 +21,4 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'build'
+- task: SonarCloudAnalyze@1
