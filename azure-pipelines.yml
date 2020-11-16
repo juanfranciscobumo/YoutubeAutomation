@@ -1,5 +1,4 @@
 # Gradle
-
 # Build your Java project and run tests with Gradle using a Gradle wrapper script.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
@@ -21,23 +20,3 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'build'
-  - task: SonarCloudPrepare@1
-    inputs:
-      SonarCloud: 'YouTube'
-      organization: 'juanfranciscobumo'
-      scannerMode: 'CLI'
-      configMode: 'manual'
-      cliProjectKey: '$(Build.Repository.Name)'
-      cliProjectName: '$(Build.Repository.Name)'
-      cliProjectVersion: '$(Build.BuildNumber)'
-      cliSources: '.'
-      extraProperties: |
-        # Additional properties that will be passed to the scanner, 
-        # Put one key=value per line, example:
-        # sonar.exclusions=**/*.bin
-        sonar.language=java
-        sonar.java.binaries=build
-        sonar.sources=src
-        sonar.sourceEncoding=UTF-8
-        sonar.projectVersion=1.0
-
