@@ -18,5 +18,5 @@ steps:
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.html'
+    testResultsFiles: '****/target/site/serenity*.html'
     tasks: 'clean test aggregate'
