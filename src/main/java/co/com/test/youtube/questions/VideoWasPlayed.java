@@ -4,7 +4,7 @@ import co.com.test.youtube.pages.LookForAVideoPages;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 
-public class VideoWasPlayed implements Question<Boolean> {
+public class VideoWasPlayed implements Question<String> {
 	private String timeVideo;
 
 	public VideoWasPlayed(String timeVideo) {
@@ -12,8 +12,8 @@ public class VideoWasPlayed implements Question<Boolean> {
 	}
 
 	@Override
-	public Boolean answeredBy(Actor actor) {
-		return LookForAVideoPages.MUSICPLAYER.of(timeVideo).resolveFor(actor).isVisible();
+	public String answeredBy(Actor actor) {
+		return LookForAVideoPages.MUSICPLAYER.of(timeVideo).resolveFor(actor).getText();
 	}
 
 	public static VideoWasPlayed inYouTube(String timeVideo) {

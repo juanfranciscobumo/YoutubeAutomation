@@ -42,7 +42,7 @@ public class LookingForAVideoStepDefinition {
 
 	@Then("Juan checks that the video has duration of {string}")
 	public void juanChecksThatTheVideoHasDurationOf(String timeVideo) {
-		theActorInTheSpotlight().should(seeThat(VideoWasPlayed.inYouTube(timeVideo), equalTo(true))
+		theActorInTheSpotlight().should(seeThat(VideoWasPlayed.inYouTube(timeVideo), equalTo(timeVideo))
 				.orComplainWith(YouTubeException.class, NOT_FOUND_VIDEO));
 	}
 }
