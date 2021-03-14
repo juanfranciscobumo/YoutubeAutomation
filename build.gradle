@@ -42,6 +42,13 @@ sonarqube {
 serenity {
     reports = ["single-page-html"]
 }
+subprojects {
+    sonarqube {
+        properties {
+            property "sonar.sources", "src"
+        }
+    }
+}
 dependencies {
 
     compile libs.test.cucumber.junit,

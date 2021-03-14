@@ -1,6 +1,6 @@
 package co.com.test.youtube.stepdefinitions;
 
-import static co.com.test.youtube.exceptions.YouTubeException.NOT_FOUND_VIDEO;
+import static co.com.test.youtube.exceptions.YouTubeError.NOT_FOUND_VIDEO;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
@@ -8,7 +8,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 import org.openqa.selenium.WebDriver;
 
-import co.com.test.youtube.exceptions.YouTubeException;
+import co.com.test.youtube.exceptions.YouTubeError;
 import co.com.test.youtube.pages.LookForAVideoPages;
 import co.com.test.youtube.questions.VideoWasPlayed;
 import co.com.test.youtube.tasks.LookAVideoInYouTube;
@@ -43,6 +43,6 @@ public class LookingForAVideoStepDefinition {
 	@Then("Juan checks that the video has duration of {string}")
 	public void juanChecksThatTheVideoHasDurationOf(String timeVideo) {
 		theActorInTheSpotlight().should(seeThat(VideoWasPlayed.inYouTube(timeVideo), equalTo(timeVideo))
-				.orComplainWith(YouTubeException.class, NOT_FOUND_VIDEO));
+				.orComplainWith(YouTubeError.class, NOT_FOUND_VIDEO));
 	}
 }
