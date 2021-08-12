@@ -1,5 +1,5 @@
 pool:
-  name: Azure Pipelines
+  name: windows-2019
   demands: java
 
 steps:
