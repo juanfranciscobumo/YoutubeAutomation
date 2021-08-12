@@ -1,5 +1,5 @@
 pool:
-  vmImage: windows-2019
+  vmImage: vs2017-win2016
   demands: java
 
 steps:
@@ -16,6 +16,15 @@ steps:
     cliProjectKey: '$(Build.Repository.Name)'
     cliProjectName: '$(Build.Repository.Name)'
     cliProjectVersion: '$(Build.BuildNumber)'
+    extraProperties: |
+     # Additional properties that will be passed to the scanner, 
+     # Put one key=value per line, example:
+     # sonar.exclusions=**/*.bin
+     sonar.language=java
+     sonar.java.binaries=build
+     sonar.sources=src
+     sonar.sourceEncoding=UTF-8
+     sonar.projectVersion=1.0
 
 - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
   displayName: 'Run Code Analysis'
@@ -36,3 +45,4 @@ steps:
   displayName: 'Publish Pipeline Artifact'
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)'
+
