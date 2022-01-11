@@ -1,5 +1,6 @@
 package co.com.test.youtube.tasks;
 
+import static co.com.test.youtube.pages.LookForAVideoPages.SKIPADDS;
 import static co.com.test.youtube.pages.LookForAVideoPages.VIDEOSEARCHED;
 
 import net.serenitybdd.screenplay.Actor;
@@ -17,7 +18,8 @@ public class PlayVideo implements Task {
 	@Override
 	public <T extends Actor> void performAs(T actor) {
 		actor.attemptsTo(
-				Click.on(VIDEOSEARCHED.of(videoName)));
+				Click.on(VIDEOSEARCHED.of(videoName)),
+				Click.on(SKIPADDS));
 	}
 
 	public static PlayVideo ofAutorName(String videoName) {
