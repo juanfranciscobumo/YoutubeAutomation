@@ -21,7 +21,7 @@ import net.serenitybdd.screenplay.actions.Open;
 import net.thucydides.core.annotations.Managed;
 
 public class LookingForAVideoStepDefinition {
-	@Managed(driver = "chrome")
+	@Managed(driver = "firefox")
 	WebDriver driver;
 
 	@Given("that {string} is on YouTube")
