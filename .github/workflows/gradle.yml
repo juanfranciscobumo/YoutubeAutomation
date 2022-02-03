@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-java@v2
@@ -15,7 +15,7 @@ jobs:
        fetch-depth: 0
        distribution: 'temurin'
        java-version: '11'
-    - run: chmod +x ./gradlew clean test aggregate
+    - run: ./gradlew clean test aggregate
     
     - name: Init new repo in dist folder and commit generated files
       run: |
