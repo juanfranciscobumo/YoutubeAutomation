@@ -51,7 +51,7 @@ subprojects {
 }
 dependencies {
 
-    compile libs.test.cucumber.junit,
+    implementation libs.test.cucumber.junit,
             libs.test.cucumber.java,
             libs.test.cucumber.core,
             libs.test.serenity.core,

@@ -18,7 +18,7 @@ ext {
                             cucumber           : "net.serenity-bdd:serenity-cucumber6:${serenityCucumberVersion}",
                     ],
                     cucumber: [
-                            java : "io.cucumber:cucumber-java8:${cucumberVersion}",
+                            java : "io.cucumber:cucumber-java:${cucumberVersion}",
                             junit: "io.cucumber:cucumber-junit-platform-engine:${cucumberVersion}",
                             core : "io.cucumber:cucumber-core:${cucumberVersion}"
                     ],
