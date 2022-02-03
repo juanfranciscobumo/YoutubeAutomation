@@ -15,6 +15,7 @@ jobs:
     - name: Run test
       env:
         SELENIUM_HUB_HOST: 'localhost'
+      run:  ./gradlew test 
     - uses: actions/setup-java@v2
       with:
        fetch-depth: 0
