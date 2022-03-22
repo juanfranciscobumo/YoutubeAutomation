@@ -1,11 +1,11 @@
 #encoding: iso-8859-1
-#Author: juanfranciscobumo@gmail.co
+#Author: juanfranciscobumo@gmail.com
+@Issue:SPRIN-1
 Feature: Look a video in YouTube
   How an user of YouTube
   I want to look for a video
   To check that the search is successful
 
-  @singlebrowser
   Scenario Outline: Look a video
     Given that 'Juan' is on YouTube
     When Juan looks for the song '<Song>'

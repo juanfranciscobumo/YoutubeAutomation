@@ -1,28 +1,32 @@
 package co.com.test.youtube.tasks;
 
-import static co.com.test.youtube.pages.LookForAVideoPages.SKIPADDS;
-import static co.com.test.youtube.pages.LookForAVideoPages.VIDEOSEARCHED;
-
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
+import net.thucydides.core.annotations.Step;
+import org.openqa.selenium.WebElement;
+
+import static co.com.test.youtube.pages.LookForAVideoPages.SKIPADDS;
+import static co.com.test.youtube.pages.LookForAVideoPages.VIDEOSEARCHED;
 
 public class PlayVideo implements Task {
-	private String videoName;
+    private String autorName;
 
-	public PlayVideo(String videoName) {
-		this.videoName = videoName;
-	}
+    public PlayVideo(String autorName) {
+        this.autorName = autorName;
+    }
 
-	@Override
-	public <T extends Actor> void performAs(T actor) {
-		actor.attemptsTo(
-				Click.on(VIDEOSEARCHED.of(videoName)),
-				Click.on(SKIPADDS));
-	}
+    @Override
+    @Step("Play the video of the #autorName")
+    public <T extends Actor> void performAs(T actor) {
+        actor.attemptsTo(
+                Click.on(VIDEOSEARCHED.of(autorName)),
+                Click.on(SKIPADDS));
+    }
 
-	public static PlayVideo ofAutorName(String videoName) {
-		return Tasks.instrumented(PlayVideo.class, videoName);
-	}
+    public static PlayVideo ofAutorName(String autorName) {
+        return Tasks.instrumented(PlayVideo.class, autorName);
+    }
 }

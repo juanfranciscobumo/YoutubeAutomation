@@ -1,13 +1,5 @@
 package co.com.test.youtube.stepdefinitions;
 
-import static co.com.test.youtube.exceptions.YouTubeError.NOT_FOUND_VIDEO;
-import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
-import static org.hamcrest.Matchers.equalTo;
-
-import org.openqa.selenium.WebDriver;
-
 import co.com.test.youtube.exceptions.YouTubeError;
 import co.com.test.youtube.pages.LookForAVideoPages;
 import co.com.test.youtube.questions.VideoWasPlayed;
@@ -18,31 +10,37 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Open;
-import net.thucydides.core.annotations.Managed;
+import org.openqa.selenium.WebDriver;
+
+import static co.com.test.youtube.exceptions.YouTubeError.NOT_FOUND_VIDEO;
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
+import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static org.hamcrest.Matchers.equalTo;
 
 public class LookingForAVideoStepDefinition {
-	@Managed(driver = "chrome")
-	WebDriver driver;
 
-	@Given("that {string} is on YouTube")
-	public void thatIsOnYouTube(String actor) {
-		theActorCalled(actor).whoCan(BrowseTheWeb.with(driver))
-				.wasAbleTo(Open.browserOn().the(LookForAVideoPages.class));
-	}
+    WebDriver driver;
 
-	@When("Juan looks for the song {string}")
-	public void juanLooksForTheSong(String videoName) {
-		theActorInTheSpotlight().attemptsTo(LookAVideoInYouTube.withName(videoName));
-	}
+    @Given("that {string} is on YouTube")
+    public void thatIsOnYouTube(String actor) {
+        theActorCalled(actor).whoCan(BrowseTheWeb.with(driver))
+                .wasAbleTo(Open.browserOn().the(LookForAVideoPages.class));
+    }
 
-	@When("Juan plays video of {string}")
-	public void juanPlaysVideoOf(String autorName) {
-		theActorInTheSpotlight().attemptsTo(PlayVideo.ofAutorName(autorName));
-	}
+    @When("Juan looks for the song {string}")
+    public void juanLooksForTheSong(String videoName) {
+        theActorInTheSpotlight().attemptsTo(LookAVideoInYouTube.withName(videoName));
+    }
 
-	@Then("Juan checks that the video has duration of {string}")
-	public void juanChecksThatTheVideoHasDurationOf(String timeVideo) {
-		theActorInTheSpotlight().should(seeThat(VideoWasPlayed.inYouTube(timeVideo), equalTo(timeVideo))
-				.orComplainWith(YouTubeError.class, NOT_FOUND_VIDEO));
-	}
+    @When("Juan plays video of {string}")
+    public void juanPlaysVideoOf(String autorName) {
+        theActorInTheSpotlight().attemptsTo(PlayVideo.ofAutorName(autorName));
+    }
+
+    @Then("Juan checks that the video has duration of {string}")
+    public void juanChecksThatTheVideoHasDurationOf(String timeVideo) {
+        theActorInTheSpotlight().should(seeThat(VideoWasPlayed.inYouTube(timeVideo), equalTo(timeVideo))
+                .orComplainWith(YouTubeError.class, NOT_FOUND_VIDEO));
+    }
 }
