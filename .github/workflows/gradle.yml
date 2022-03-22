@@ -9,19 +9,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Zalenium
-      uses: ajinx/zalenium@1.1
-    - name: Run test
-      env:
-        SELENIUM_HUB_HOST: 'localhost'
-      run:  ./gradlew test 
-    - uses: actions/setup-java@v2
-      with:
-       fetch-depth: 0
-       distribution: 'temurin'
-       java-version: '11'
-    - run: ./gradlew clean test aggregate
+    - name: Start selenoid
+      uses: Xotabu4/selenoid-github-action@v2
+    - uses: actions/checkout@v1
+    - run: ./gradlew clean test aggregate 
     
     - name: Init new repo in dist folder and commit generated files
       run: |
