@@ -1,11 +1,11 @@
 package co.com.test.youtube.tasks;
 
+import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.*;
 import net.serenitybdd.screenplay.ui.*;
-import net.thucydides.core.annotations.Step;
 
 import static co.com.test.youtube.pages.LookForAVideoPages.*;
 

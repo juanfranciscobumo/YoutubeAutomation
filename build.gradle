@@ -16,40 +16,37 @@ buildscript {
         }
     }
     dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:3.2.1-RC1")
-        classpath("net.serenity-bdd:serenity-single-page-report:3.2.1-RC1")
+        classpath("net.serenity-bdd:serenity-gradle-plugin:4.0.16")
     }
 }
-
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: 'net.serenity-bdd.aggregator'
+apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
 apply from: "$rootDir/gradle/libraries.gradle"
-serenity {
-    reports = ["single-page-html"]
-}
+
 dependencies {
 
     implementation libs.test.serenity.cucumber,
             libs.test.serenity.junit,
-            // libs.test.cucumber.junit,
-            // libs.test.cucumber.java,
-            // libs.test.cucumber.core,
-            //libs.test.serenity.core,
-            //libs.test.serenity.screenplay,
-            //libs.test.serenity.screenplayWebdriver,
-            // libs.test.junitApi,
-            // libs.test.junitEngine,
-            //libs.test.assertj,
-            libs.slf4jApi
+            libs.test.cucumber.junit,
+            libs.test.cucumber.java,
+            libs.test.cucumber.core,
+            libs.test.serenity.core,
+            libs.test.serenity.screenplay,
+            libs.test.serenity.screenplayWebdriver,
+            libs.test.junitPlatform,
+            libs.test.junitLauncher,
+            libs.test.junitVintage,
+            libs.test.junitJupiter,
+            libs.test.assertj,
+            libs.logback
 
 }
 
+
 test {
-    testLogging.showStandardStreams = true
-    systemProperties System.getProperties()
-    maxParallelForks = 2
+    useJUnitPlatform()
 }
 
 gradle.startParameter.continueOnFailure = true
