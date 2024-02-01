@@ -8,5 +8,5 @@ Feature: Look at the menu in youtube
   Scenario: Look at the menu
     Given that 'Juan' is on YouTube
     When Juan look the menu
-    Then Juan could watch the menu 'En vivo'
+    Then Juan could watch the menu 'Live'
 

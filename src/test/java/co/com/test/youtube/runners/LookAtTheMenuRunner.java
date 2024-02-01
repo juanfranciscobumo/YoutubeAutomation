@@ -10,7 +10,7 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("/features")
-@ConfigurationParameter(key= "cucumber.features", value="src/test/resources/look_at_the_menu.feature")
+@ConfigurationParameter(key= "cucumber.features", value="src/test/resources/features/look_at_the_menu.feature")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "io.cucumber.core.plugin.SerenityReporterParallel,pretty,timeline:build/test-results/timeline")
 public class LookAtTheMenuRunner {
 }

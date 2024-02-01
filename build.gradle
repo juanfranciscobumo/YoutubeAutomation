@@ -16,7 +16,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:4.0.16")
+        classpath("net.serenity-bdd:serenity-gradle-plugin:4.0.46")
     }
 }
 apply plugin: 'java'
@@ -41,14 +41,17 @@ dependencies {
             libs.test.junitJupiter,
             libs.test.assertj,
             libs.logback
-
+}
+test {
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+    maxParallelForks = 2
 }
 
+gradle.startParameter.continueOnFailure = true
 
 test {
     useJUnitPlatform()
 }
-
-gradle.startParameter.continueOnFailure = true
 
 test.finalizedBy(aggregate)
