@@ -1,43 +1,34 @@
 name: Run Serenity BDD with Selenoid and Deploy Report
-
-on:
+'on':
   push:
     branches:
       - master
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
       - name: Set up Java
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
+          distribution: adopt
           java-version: '11'
-
       - name: Set up Selenoid
         uses: Xotabu4/selenoid-github-action@v2
         with:
-          version: '1.10.3'  # Puedes ajustar la versión según tus necesidades
-
-      - name: Change Ownership of Files
-        run: |
-          chown -R $USER:$USER ./target/site/serenity
-
-      - name: Change Permissions of Files
-        run: |
-          chmod -R 755 ./target/site/serenity
-
+          version: 1.10.3
       - name: Run Serenity BDD and Generate Report
         run: |
           ./gradlew clean test aggregate
-
+      - name: Change Ownership of Files
+        run: |
+          chown -R $USER:$USER ./target/site/serenity
+      - name: Change Permissions of Files
+        run: |
+          chmod -R 755 ./target/site/serenity
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           publish_dir: ./target/site/serenity
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: '${{ secrets.GITHUB_TOKEN }}'
