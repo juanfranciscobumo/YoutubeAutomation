@@ -36,3 +36,4 @@ jobs:
         with:
           publish_dir: ./target/site/serenity
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          
