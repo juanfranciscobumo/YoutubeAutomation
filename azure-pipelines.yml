@@ -1,6 +1,6 @@
 pool:
-  vmImage: windows-latest
-  demands: java
+  vmImage: 'ubuntu-latest'
+
 steps:
   - task: Gradle@2
     inputs:
@@ -13,17 +13,17 @@ steps:
       publishJUnitResults: true
       testResultsFiles: '**/TEST-*.xml'
       tasks: clean test
-  - task: >-
-      SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
-    displayName: Prepare analysis on SonarCloud
+
+  - task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
+    displayName: 'Prepare analysis on SonarCloud'
     inputs:
-      SonarCloud: YouTube
-      organization: juanfranciscobumo
-      scannerMode: CLI
-      configMode: manual
-      cliProjectKey: $(Build.Repository.Name)
-      cliProjectName: $(Build.Repository.Name)
-      cliProjectVersion: $(Build.BuildNumber)
+      SonarCloud: 'YouTube'
+      organization: 'juanfranciscobumo'
+      scannerMode: 'CLI'
+      configMode: 'manual'
+      cliProjectKey: '$(Build.Repository.Name)'
+      cliProjectName: '$(Build.Repository.Name)'
+      cliProjectVersion: '$(Build.BuildNumber)'
       extraProperties: |
         # Additional properties that will be passed to the scanner, 
         # Put one key=value per line, example:
@@ -33,21 +33,23 @@ steps:
         sonar.sources=src
         sonar.sourceEncoding=UTF-8
         sonar.projectVersion=1.0
-  - task: >-
-      SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
-    displayName: Run Code Analysis
-  - task: >-
-      SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
-    displayName: Publish Quality Gate Result
+
+  - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
+    displayName: 'Run Code Analysis'
+
+  - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
+    displayName: 'Publish Quality Gate Result'
+
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
     inputs:
-      SourceFolder: $(system.defaultworkingdirectory)
+      SourceFolder: '$(system.defaultworkingdirectory)'
       Contents: |
         **
         build
-      TargetFolder: $(build.artifactstagingdirectory)
+      TargetFolder: '$(build.artifactstagingdirectory)'
+
   - task: PublishPipelineArtifact@1
-    displayName: Publish Pipeline Artifact
+    displayName: 'Publish Pipeline Artifact'
     inputs:
-      targetPath: $(Build.ArtifactStagingDirectory)
+      targetPath: '$(Build.ArtifactStagingDirectory)'
