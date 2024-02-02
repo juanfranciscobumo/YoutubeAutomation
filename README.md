@@ -45,6 +45,9 @@
 
 * gradle clean test aggregate
 
+# Ubicación del reporte
+
+* https://juanfranciscobumo.github.io/YoutubeAutomation/index.html
 
 ## Autores
 
