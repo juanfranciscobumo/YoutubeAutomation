@@ -14,9 +14,5 @@ jobs:
         inputs:
           versionSpec: '11'
 
-      - task: Gradle@2
-        inputs:
-          workingDirectory: ''
-          gradleWrapperFile: 'gradlew'
-          options: '-Xmx3072m'
-          tasks: 'clean test'
+      - script: ./gradlew clean test
+        displayName: 'Run Gradle Tests'
