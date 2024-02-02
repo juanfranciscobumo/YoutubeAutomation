@@ -24,8 +24,8 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
 apply from: "$rootDir/gradle/libraries.gradle"
-sourceCompatibility = 16
-targetCompatibility = 16
+sourceCompatibility = 11
+targetCompatibility = 11
 dependencies {
 
     implementation libs.test.serenity.cucumber,
