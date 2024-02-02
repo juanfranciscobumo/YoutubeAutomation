@@ -21,9 +21,6 @@ jobs:
       - name: Run Serenity BDD and Generate Report
         run: |
           ./gradlew clean test aggregate
-      - name: Change Ownership of Files
-        run: |
-          chown -R $USER:$USER ./target/site/serenity
       - name: Change Permissions of Files
         run: |
           chmod -R 755 ./target/site/serenity
