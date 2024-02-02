@@ -10,14 +10,11 @@ jobs:
   - job: RunSerenityTests
     displayName: 'Run Serenity BDD with Selenoid'
     steps:
-      - task: UseJavaVersion@1
-        inputs:
-          versionSpec: '11'
-          addToPath: true
-
       - checkout: self
 
       - script: |
+          export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+          export PATH=$JAVA_HOME/bin:$PATH
           ./gradlew clean test aggregate
           chmod -R 755 ./target/site/serenity
 
