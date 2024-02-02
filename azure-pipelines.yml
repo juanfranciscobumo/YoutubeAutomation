@@ -1,39 +1,29 @@
-name: Run Serenity BDD with Selenoid and Deploy Report
+name: Run Serenity BDD with Selenoid
+
 trigger:
   - master
+
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
+
 jobs:
   - job: RunSerenityTests
-    displayName: Run Serenity BDD with Selenoid and Deploy Report
+    displayName: 'Run Serenity BDD with Selenoid'
     steps:
       - task: UseJavaVersion@1
         inputs:
           versionSpec: '11'
           addToPath: true
+
       - checkout: self
-      - task: DownloadPipelineArtifact@2
-        inputs:
-          artifactName: your-artifact-name
-          path: $(System.ArtifactsDirectory)
+
       - script: |
           ./gradlew clean test aggregate
           chmod -R 755 ./target/site/serenity
-        displayName: Run Serenity BDD and Change Permissions
+
+        displayName: 'Run Serenity BDD and Change Permissions'
+
       - task: PublishPipelineArtifact@1
         inputs:
-          artifactName: serenity-reports
+          artifactName: 'serenity-reports'
           targetPath: $(Build.ArtifactStagingDirectory)
-  - job: DeployToGitHubPages
-    displayName: Deploy to GitHub Pages
-    dependsOn: RunSerenityTests
-    steps:
-      - checkout: self
-      - task: DownloadPipelineArtifact@2
-        inputs:
-          artifactName: serenity-reports
-          path: $(System.ArtifactsDirectory)
-      - task: peaceiris/actions-gh-pages@v3
-        inputs:
-          github_token: '${{ secrets.GITHUB_TOKEN }}'
-          publish_dir: $(System.ArtifactsDirectory)/serenity-reports
