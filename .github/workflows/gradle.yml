@@ -23,8 +23,16 @@ jobs:
         run: |
           ./gradlew clean test aggregate
 
+      - name: Change Ownership of Files
+        run: |
+          chown -R $USER:$USER ./target/site/serenity
+
+      - name: Change Permissions of Files
+        run: |
+          chmod -R 755 ./target/site/serenity
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          publish_dir: target/site/serenity
+          publish_dir: ./target/site/serenity
           github_token: ${{ secrets.GITHUB_TOKEN }}
