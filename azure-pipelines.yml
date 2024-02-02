@@ -1,55 +1,22 @@
+trigger:
+  - master
+
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-  - task: Gradle@2
-    inputs:
-      workingDirectory: ''
-      gradleWrapperFile: gradlew
-      gradleOptions: '-Xmx3072m'
-      javaHomeOption: JDKVersion
-      jdkVersionOption: '11'
-      jdkArchitectureOption: x64
-      publishJUnitResults: true
-      testResultsFiles: '**/TEST-*.xml'
-      tasks: clean test
+jobs:
+  - job: RunTests
+    displayName: 'Run Serenity BDD Tests'
+    steps:
+      - checkout: self
 
-  - task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
-    displayName: 'Prepare analysis on SonarCloud'
-    inputs:
-      SonarCloud: 'YouTube'
-      organization: 'juanfranciscobumo'
-      scannerMode: 'CLI'
-      configMode: 'manual'
-      cliProjectKey: '$(Build.Repository.Name)'
-      cliProjectName: '$(Build.Repository.Name)'
-      cliProjectVersion: '$(Build.BuildNumber)'
-      extraProperties: |
-        # Additional properties that will be passed to the scanner, 
-        # Put one key=value per line, example:
-        # sonar.exclusions=**/*.bin
-        sonar.language=java
-        sonar.java.binaries=build
-        sonar.sources=src
-        sonar.sourceEncoding=UTF-8
-        sonar.projectVersion=1.0
+      - task: UseJavaVersion@0
+        inputs:
+          versionSpec: '11'
 
-  - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
-    displayName: 'Run Code Analysis'
-
-  - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
-    displayName: 'Publish Quality Gate Result'
-
-  - task: CopyFiles@2
-    displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
-    inputs:
-      SourceFolder: '$(system.defaultworkingdirectory)'
-      Contents: |
-        **
-        build
-      TargetFolder: '$(build.artifactstagingdirectory)'
-
-  - task: PublishPipelineArtifact@1
-    displayName: 'Publish Pipeline Artifact'
-    inputs:
-      targetPath: '$(Build.ArtifactStagingDirectory)'
+      - task: Gradle@2
+        inputs:
+          workingDirectory: ''
+          gradleWrapperFile: 'gradlew'
+          options: '-Xmx3072m'
+          tasks: 'clean test'
