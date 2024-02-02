@@ -49,6 +49,6 @@
 
 * https://juanfranciscobumo.github.io/YoutubeAutomation/index.html
 
-## Autores
+## Autor
 
 Juan Francisco Builes Montoya - juanfranciscobumo@gmail.com
