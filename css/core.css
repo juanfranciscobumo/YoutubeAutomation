@@ -322,6 +322,32 @@ h3.discreet-story-header {
     margin: 0 0 5px;
 }
 
+.rule-tags {
+    text-align: right;
+}
+
+.example-tags {
+    text-align: right;
+}
+
+.inline-tag {
+    padding-top: 2px;
+    padding-right: 5px;
+    margin: 0 0 5px;
+}
+
+.feature-tags .tag-badge {
+    background-color: #0d78ae;
+}
+
+.rule-tags .tag-badge {
+    background-color: #0d78ae;
+}
+
+.example-tags .tag-badge {
+    background-color: #4c963e;
+}
+
 i.tag {
     color:#ff1631
 }
@@ -379,7 +405,7 @@ i.tag {
 
 .breadcrumbs
 {
-    font-family:euphemia, verdana, sans-serif; font-size:14px; color: #0d78ae;
+    font-family:euphemia, verdana, sans-serif; font-size:14px; color: #0d78ae; text-transform: capitalize;
 }
 
 .bluetext
@@ -1024,9 +1050,9 @@ a.tagLink:visited, a.tagLink:link {
 }
 
 .tag-badge {
-    font-weight: normal;
-    color: #ffffff;
-    background-color: #388bbb;
+    font-weight: 400 !important;
+    font-size: 0.9em !important;
+    color: floralwhite !important;
 }
 .story-title
 {
@@ -2078,135 +2104,6 @@ div.scenario-text:empty {
     margin-bottom: 1em;
 }
 
-.card-header {
-    border-bottom: solid gray 0.5px;
-    padding: 0.5em;
-    font-weight: bold;
-}
-
-.card-body {
-    padding: 0.5em;
-}
-
-.scenario-result-icon {
-    float: right;
-}
-
-.scenario-docs table {
-    margin-left: 3em;
-    margin-top: 0.5em;
-}
-
-.scenario-docs th {
-    font-weight: bold;
-    color: grey;
-    font-size: 12px;
-    padding: 4px;
-    border: 0.5px solid grey;
-}
-.scenario-docs td {
-    padding: 4px;
-    border: 0.5px solid grey;
-}
-
-.scenario-docs .dataTable {
-    border-bottom-color: white;
-}
-
-.examples {
-    padding-top: 0.5em;
-}
-
-.automated-stats {
-    background-color: rgba(38, 38, 38, 0.06);
-    width: 8%;
-}
-
-.manual-stats {
-    background-color: rgba(38, 38, 38, 0.03);
-    width: 8%;
-}
-
-.total-stats {
-    font-weight: bold;
-    width: 8%;
-}
-
-.scenario-result-table th {
-    text-transform: capitalize;
-}
-
-.treeview .badge {
-    background-color: white;
-}
-
-.toc-title {
-    width: 90%;
-}
-
-.top-list-title {
-    min-width: 25em;
-}
-
-.failure-badge {
-    background-color: red !important;
-}
-
-.feature-tags {
-    float:right;
-    padding:4px;
-}
-
-.stacktrace-details {
-    width: 99%;
-    margin-left: 0px !important;
-    background-color: bisque;
-    font-family: monospace;
-}
-
-.rest-query-details {
-    width: 99%;
-    margin-left: 0px !important;
-    background-color: #EEEEE0;
-    font-family: monospace;
-}
-
-.details-button  {
-    float: right;
-    margin-top: 4px !important;
-    margin-bottom: 4px !important;
-    margin-right: 5px; !important;
-    font-size: 1em;
-    background-color: rgba(238,0,0,0.3);
-}
-
-.missing-scenario-warning {
-    color:#ff1631
-}
-
-div.progress {
-    height:20px;
-    margin:0px !important;
-}
-
-.feature-count {
-    font-weight: normal;
-    color: dimgrey;
-}
-
-.requirements-overview img {width: 100%;}
-
-td.indented-error-category i {
-    margin-left: 20px;
-}
-
-.report-info {
-    font-style: italic;
-    font-size: 0.9em;
-    padding-top: 0.5em;
-    padding-left: 1em;
-}
-
 .example-table {
     overflow-x:auto;
 }
@@ -2301,17 +2198,11 @@ td.indented-error-category i {
 
 .example-table-in-scenario th:last-child {
     width: 0.5em;
-    /*border-right: solid white 1px;*/
-    /*border-top: solid white 1px;*/
-    /*border-bottom: solid white 1px;*/
 }
 
 .example-table-in-scenario td:last-child {
     padding-left: 0.5em;
     width: 1em;
-    /*border-right: solid white 1px;*/
-    /*border-top: solid white 1px;*/
-    /*border-bottom: solid white 1px;*/
 }
 
 .scenario-description {
@@ -2320,8 +2211,6 @@ td.indented-error-category i {
 
 .scenario-docs .card-body table {
     margin-left: 3em;
-    width: 95%;
-    max-width: 95%;
 }
 
 .context-icon {
@@ -2533,6 +2422,10 @@ div.scenario-text:empty {
     font-size: 2.5rem;
 }
 
+.title-icon {
+    font-size: 3.5rem;
+}
+
 
 /*.scenario-result.PENDING {*/
 /*background-color: rgba(0, 167, 255, 0.05);*/
@@ -2567,12 +2460,13 @@ div.scenario-text:empty {
 }
 
 .scenario-docs th {
-    font-weight: bold;
+    /*font-weight: bold;*/
+    font-size: 14px;
     color: grey;
-    font-size: 12px;
     padding: 4px;
     border: 0.5px solid grey;
 }
+
 .scenario-docs td {
     padding: 4px;
     border: 0.5px solid grey;
@@ -2606,7 +2500,8 @@ div.scenario-text:empty {
 }
 
 .treeview .badge {
-    background-color: white;
+    background-color: aliceblue;
+    border: lightblue 1px solid;
 }
 
 .toc-title {
@@ -2619,6 +2514,8 @@ div.scenario-text:empty {
 
 .failure-badge {
     background-color: red !important;
+    color: white !important;
+    font-weight: bold !important;
 }
 
 .feature-tags {
@@ -2647,6 +2544,14 @@ div.scenario-text:empty {
     margin-right: 5px; !important;
     font-size: 1em;
     background-color: rgba(238,0,0,0.3);
+}
+
+.copy-button {
+    float: right;
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+    margin-right: 5px; !important;
+    font-size: 1em;
 }
 
 .missing-scenario-warning {
@@ -2692,9 +2597,6 @@ td.indented-error-category i {
 .test-report td.test-SUCCESS {
     background-color: white;
 }
-
-
-
 
 .example-table-in-scenario {
     overflow-x:auto;
@@ -2761,20 +2663,6 @@ td.indented-error-category i {
     /*border-right: solid white 1px;*/
     /*border-top: solid white 1px;*/
     /*border-bottom: solid white 1px;*/
-}
-
-.scenario-description {
-    padding-left: 1em;
-}
-
-.scenario-docs .card-body table {
-    margin-left: 3em;
-    width: 95%;
-    max-width: 95%;
-}
-
-.context-icon {
-    padding-right: 1em;
 }
 
 .more-details-result-compromised { background-color: #ff68ff; !important; }
