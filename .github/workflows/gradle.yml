@@ -2,7 +2,7 @@ name: Run Serenity BDD and Deploy Report
 'on':
   push:
     branches:
-      - main
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
