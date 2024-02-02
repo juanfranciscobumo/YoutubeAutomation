@@ -3,13 +3,16 @@ name: Run Serenity Tests with SonarCloud
 pool:
   vmImage: 'windows-latest'
 
-demands:
-  - java
-
 jobs:
   - job: RunSerenityTests
     displayName: 'Run Serenity Tests'
+    pool:
+      vmImage: 'windows-latest'
     steps:
+      - task: UseJavaVersion@0
+        inputs:
+          version: '11'
+
       - task: Gradle@2
         inputs:
           workingDirectory: ''
