@@ -1,54 +1,68 @@
-# ![Serenity BDD](docs/youtube.png "Logo Title Text 1")
+# YouTube Video Search - Web UI Testing
 
+[![CI](https://github.com/juanfranciscobumo/YoutubeAutomation/actions/workflows/ci.yml/badge.svg)](https://github.com/juanfranciscobumo/YoutubeAutomation/actions/workflows/ci.yml)
+[![Serenity BDD](https://img.shields.io/badge/Serenity--BDD-4.2.7-informational)](https://serenity-bdd.github.io/)
+[![Java](https://img.shields.io/badge/Java-17-orange)](https://adoptium.net/)
+[![Gradle](https://img.shields.io/badge/Gradle-8.5-green)](https://gradle.org/)
 
-# Prueba automatizada para realizar la búsqueda de un video en YouTube
+Web UI test automation for **YouTube** video search and navigation, built with **Serenity BDD**, **Screenplay pattern**, **Cucumber**, **Selenium WebDriver** and **Gradle**.
 
-# ![Serenity BDD](docs/serenity.png "Logo Title Text 1")
+## What it demonstrates
 
-## Framework
+- Web UI testing with Selenium WebDriver via Serenity Screenplay
+- Video search, playback and duration validation
+- Menu navigation testing
+- Selenoid integration for browser automation
+- Serenity HTML reports
 
-* Serenity: Se utiliza como framework Serenity BDD, que utiliza los resultados de las pruebas para realizar la documentación describiendo lo que hace la aplicación, informa que pruebas se han realizado, las pruebas que fallaron y las que pasaron. 
+## Tech stack
 
-## Patron de desarrollo
+| Tool | Version |
+|------|---------|
+| Java | 17 |
+| Serenity BDD | 4.2.7 |
+| Cucumber | 7.22.0 |
+| JUnit | 5.11.4 |
+| Selenium | managed by Serenity |
+| Gradle | 8.5 |
 
-* Se utiliza Screenplay pattern ya que esta centrado en el usuario y orientado a tareas, utiliza los principios S.O.L.I.D. Con screenplay se puede escribir el codigo en un lenguaje mas natural.
+## Test scenarios
 
-## Herramientas de compilación 
+- Search for a video on YouTube and validate it plays correctly
+- Verify video duration matches expected value
+- Navigate YouTube menu sections
 
-# ![Serenity BDD](docs/gradle.png "Logo Title Text 1")
+## Run locally
 
-### Gradle
+Requires a running Selenoid instance or local ChromeDriver:
 
-* Es un gestor de proyectos.
+```bash
+./gradlew clean test aggregate
+```
 
-# ![Serenity BDD](docs/cucumber.png "Logo Title Text 1")
+On Windows:
 
-### Cucumber
+```powershell
+.\gradlew.bat clean test aggregate
+```
 
-* Es una herramienta que permite escribir los casos de prueba.
+The Serenity report is generated under `build/site/serenity/`.
 
-## La estructura completa del proyecto es la siguiente:
+## CI/CD
 
-* Features: Utiliza lenguaje Gherkin y contienen los escenarios de negocio del caso de prueba. 
-* Tasks: Clases que representan tareas que realiza el actor a nivel de proceso de negocio. 
-* Questions: Comprueban los resultados de las operaciones realizadas. 
-* Exceptions: Son las excepciones que se visualizan cuando un test falla o tiene errores. 
-* Interfaces: Es una clase abstracta que se utiliza para agrupar métodos relacionados con cuerpos vacíos.
+GitHub Actions runs the test suite on every push to `master` using **Selenoid** for browser automation, and deploys the Serenity report to **GitHub Pages**.
 
+Report: https://juanfranciscobumo.github.io/YoutubeAutomation/
 
-# Requerimientos
+## Project structure
 
-* Java JDK 1.8 
-* Gestor de proyectos Gradle 
+```
+src/
+├── main/java/          # Step definitions, tasks, questions, UI targets
+└── test/resources/
+    └── features/       # Cucumber .feature files
+```
 
-# Comandos para ejecutar el proyecto.
+## Author
 
-* gradle clean test aggregate
-
-# Ubicación del reporte
-
-* https://juanfranciscobumo.github.io/YoutubeAutomation/index.html
-
-## Autor
-
-Juan Francisco Builes Montoya - juanfranciscobumo@gmail.com
+Juan Francisco Builes Montoya - [juanfranciscobumo@gmail.com](mailto:juanfranciscobumo@gmail.com)
